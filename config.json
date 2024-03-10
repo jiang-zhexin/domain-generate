@@ -1,0 +1,138 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "debug"
+    },
+    "inbounds": [
+        {
+            "format": "geosite",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/v2fly/domain-list-community/release/dlc.dat"
+        },
+        {
+            "format": "list",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt",
+            "addtags": "gfwlist"
+        },
+        {
+            "format": "list",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt",
+            "addtags": "anti-ad"
+        },
+        {
+            "format": "dnsmasq",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf",
+            "addtags": "dnsmasq-china-list"
+        },
+        {
+            "format": "url",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt",
+            "addtags": "category-public-tracker"
+        },
+        {
+            "format": "url",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/ngosang/trackerslist/master/blacklist.txt",
+            "addtags": "block-public-tracker"
+        },
+        {
+            "format": "url",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt",
+            "addtags": "category-public-tracker"
+        },
+        {
+            "format": "url",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/blacklist.txt",
+            "addtags": "block-public-tracker"
+        },
+        {
+            "format": "hosts",
+            "type": "remote",
+            "src": "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt",
+            "addtags": "block-windows-spy"
+        }
+    ],
+    "rules": [
+        {
+            "category": "block",
+            "domain type": [
+                "suffix",
+                "full"
+            ],
+            "tag weight": {
+                "block-windows-spy": 1,
+                "block-public-tracker": 1,
+                "anti-ad": 1,
+                "category-porn": 1,
+                "category-ads-all": 1,
+                "ads": 1
+            }
+        },
+        {
+            "category": "direct",
+            "domain type": [
+                "suffix",
+                "full"
+            ],
+            "tag weight": {
+                "category-public-tracker": 1,
+                "dnsmasq-china-list": 1,
+                "cn": 1,
+                "microsoft": 1,
+                "apple": 1,
+                "google": -100,
+                "bing": -100,
+                "category-dev": -100,
+                "category-ads-all": -100,
+                "category-porn": -100,
+                "block-windows-spy": -100,
+                "ads": -100,
+                "anti-ad": -100
+            }
+        },
+        {
+            "category": "proxy",
+            "domain type": [
+                "suffix",
+                "full"
+            ],
+            "tag weight": {
+                "geolocation-!cn": 1,
+                "gfwlist": 1,
+                "category-dev": 1,
+                "google": 10,
+                "cn": -10,
+                "category-ads-all": -100,
+                "category-porn": -100,
+                "block-windows-spy": -100,
+                "ads": -100,
+                "dnsmasq-china-list": -100,
+                "anti-ad": -100
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "format": "domain-list",
+            "path": "result/domainlist"
+        },
+        {
+            "format": "geosite",
+            "path": "result/geosite.dat"
+        },
+        {
+            "format": "clash",
+            "path": "result/clash"
+        },
+        {
+            "format": "rule-set",
+            "path": "result/rule-set"
+        }
+    ]
+}
