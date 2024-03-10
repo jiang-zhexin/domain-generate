@@ -7,13 +7,13 @@
 运行 `domain_generate -c config.json`
 
 # config 字段说明
-> 在此处查看[示例配置](/blob/main/config.json)
+> 在此处查看[示例配置](/config.json)
 
 ## inbounds
-`inbounds` 字段定义了域名来源
+定义域名来源
 
 ### format
-`format` 字段定义了域名来源的格式，目前支持以下格式：`domain-list` `geosite` `list` `dnsmasq`
+字段定义域名来源的格式，目前支持以下格式：`domain-list` `geosite` `list` `dnsmasq`
 > 1. domain-list 是本项目的源格式，在[这里](#domain-list)有详细说明
 > 2. geosite 是 domain-list-community 项目的格式，请前往[项目仓库](https://github.com/v2fly/domain-list-community)查看格式说明
 > 3. list 是一个简单的域名列表，每行一个域名，Domain Generate 会忽略空行和 `#` 开头的行，并将所有域名解释为 `suffix` 类型
@@ -27,7 +27,7 @@
 > 注意 cn 分类和 @cn 会并成同一个 tag
 
 ### type
-`type` 字段定义了域名来源，为：`local` `remote`
+定义域名来源，为：`local` `remote`
 
 ### addtags
 `addtags` 字段会为该域名来源的所有域名添加 tags
@@ -35,28 +35,28 @@
 > 2. 在 `list` `dnsmasq`中为**必填**项
 
 ### src
-`src` 字段定义了域名来源的位置，值为 `path` 或者 `URL`
+定义域名来源的位置，值为 `path` 或者 `URL`
 
 ## rules
-`rules` 字段定义了域名的分类
+定义域名的分类
 
 ### category
-`category` 字段定义了域名分类的名字
+定义域名分类的名字
 
 ### over
-`over` 字段定义了大于该权重的域名会被匹配
+定义大于该权重的域名会被匹配
 
 ### domain type
 `domain type` 可选填 `full` `suffix` `keyword` `regexp`，留空表示匹配所有
 
 ### tag weight
-`tag weight` 字段定义了该分类下，tag 对应的权重
+定义该分类下，tag 对应的权重
 
 ## outbounds
-`outbounds` 定义了域名的输出格式
+定义域名的输出格式
 
 ### format
-`format` 字段定义了域名输出的格式，目前支持以下格式：`domain-list` `geosite` `clash` `rule-set`
+定义域名输出的格式，目前支持以下格式：`domain-list` `geosite` `clash` `rule-set`
 > 1. domain-list 是本项目的源格式，在[这里](#domain-list)有详细说明
 > 2. geosite 是 domain-list-community 项目的格式，请前往[项目仓库](https://github.com/v2fly/domain-list-community)查看格式说明
 > 3. clash 是 clash 域名匹配格式，请前往[此处](https://wiki.metacubex.one/config/rule-providers/content/#__tabbed_1_2)查看格式说明
@@ -79,7 +79,7 @@
 `path` 字段定义了输出文件夹或输出文件(geosite时)
 
 ### include
-`include` 字段定义了输出时包含的分类
+定义输出时包含的分类
 
 > 分类名称应存在于 rules.category
 > 留空表示包含所有分类
