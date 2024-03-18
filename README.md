@@ -13,7 +13,7 @@
 定义域名来源
 
 ### format
-字段定义域名来源的格式，目前支持以下格式：`domain-list` `geosite` `list` `dnsmasq`
+定义域名来源的格式，目前支持以下格式：`domain-list` `geosite` `list` `dnsmasq`
 > 1. domain-list 是本项目的源格式，在[这里](#domain-list)有详细说明
 > 2. geosite 是 domain-list-community 项目的格式，请前往[项目仓库](https://github.com/v2fly/domain-list-community)查看格式说明
 > 3. list 是一个简单的域名列表，每行一个域名，Domain Generate 会忽略空行和 `#` 开头的行，并将所有域名解释为 `suffix` 类型
@@ -30,7 +30,7 @@
 定义域名来源，为：`local` `remote`
 
 ### addtags
-`addtags` 字段会为该域名来源的所有域名添加 tags
+为该域名来源的所有域名添加 tags
 > 1. 在 `domain-list` `geosite` 中可省略
 > 2. 在 `list` `dnsmasq`中为**必填**项
 

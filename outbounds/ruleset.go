@@ -30,7 +30,7 @@ func save2ruleset(dtl *data.DomainList, path string) error {
 
 func toRuleset(dtl *data.DomainList) option.PlainRuleSet {
 	var headlessRule option.DefaultHeadlessRule
-	if l := len(dtl.Full); l > 0 {
+	if l := len(dtl.Full) + len(dtl.Suffix); l > 0 {
 		headlessRule.Domain = make([]string, 0, l)
 		for domain := range dtl.Full {
 			headlessRule.Domain = append(headlessRule.Domain, domain)
@@ -40,6 +40,9 @@ func toRuleset(dtl *data.DomainList) option.PlainRuleSet {
 		headlessRule.DomainSuffix = make([]string, 0, l)
 		for domain := range dtl.Suffix {
 			headlessRule.DomainSuffix = append(headlessRule.DomainSuffix, "."+domain)
+		}
+		for domain := range dtl.Full {
+			headlessRule.Domain = append(headlessRule.Domain, domain)
 		}
 	}
 	if l := len(dtl.Keyword); l > 0 {
