@@ -40,8 +40,6 @@ func toRuleset(dtl *data.DomainList) option.PlainRuleSet {
 		headlessRule.DomainSuffix = make([]string, 0, l)
 		for domain := range dtl.Suffix {
 			headlessRule.DomainSuffix = append(headlessRule.DomainSuffix, "."+domain)
-		}
-		for domain := range dtl.Full {
 			headlessRule.Domain = append(headlessRule.Domain, domain)
 		}
 	}
